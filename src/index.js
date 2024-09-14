@@ -6,6 +6,7 @@ const figlet = require('figlet')
 const cliName = figlet.textSync('core-vue-cli')
 const inquirer = require('inquirer')
 const childProcess = require('child_process')
+const download = require('download-git-repo')
 
 /**
  * version 
@@ -36,8 +37,20 @@ commander.program.arguments('<dir>')  // [] 可填  <>必填
     //     const command = `git clone -b develop ${gitPath} ${fullDir}`
     //     childProcess.execSync(command)
     // })
+
+    // const fullDir = path.resolve(process.cwd(), dir)
+    // const gitPath = 'https://github.com/kongbaiy/core-vue-template'
+    // const command = `git clone -b develop ${gitPath} ${fullDir}`
+    // childProcess.execSync(command)
+    
     const fullDir = path.resolve(process.cwd(), dir)
-    const gitPath = 'https://github.com/kongbaiy/core-vue-template.git'
-    const command = `git clone -b develop ${gitPath} ${fullDir}`
-    childProcess.execSync(command)
+
+    download(
+        'direct:https://github.com/kongbaiy/core-vue-template#develop', 
+        fullDir,
+        { clone: true  },
+        (error) => {
+        }
+    )
+
 }).parse(process.argv)

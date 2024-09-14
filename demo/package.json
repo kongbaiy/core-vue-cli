@@ -1,0 +1,18 @@
+{
+  "name": "demo",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@iconify-json/ep": "^1.1.16"
+  },
+  "lint-staged": {
+    "*.{vue,js,ts,jsx,tsx,json,md}": "eslint --fix",
+    "*.{css,scss}": "stylelint --fix"
+  }
+}
